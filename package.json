@@ -1,0 +1,22 @@
+{
+  "name": "dj-dp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DP-0P/dj-DP.git"
+  },
+  "author": "DP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DP-0P/dj-DP/issues"
+  },
+  "homepage": "https://github.com/DP-0P/dj-DP#readme",
+  "dependencies": {
+    "discord.js": "^13.4.0-dev.1636157105.49e3ce2"
+  }
+}

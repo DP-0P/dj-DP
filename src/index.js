@@ -11,7 +11,7 @@ client.on("ready",() => console.log("Bot is online..."));
 client.on("messageCreate",message =>{
     console.log(message.content);
 
-    if(message.content == "hello") message.reply("sup?");
+    if(message.content == "hello") message.reply("sup? ");
 });
 
 client.login(config.token);

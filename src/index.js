@@ -2,7 +2,7 @@ const Client = require("./structures/client.js");
 
 const Command = require("./structures/command.js");
 
-const config = require("./Data/config.json");
+const config = require("./data/config.json");
 
 const client = new Client();
 
@@ -27,6 +27,8 @@ client.on("ready",() => {
 
 client.on("messageCreate",message =>{
     console.log(message.content);
+
+    if(message.author.bot) return;
 
     // if(message.content == "hello") message.reply("sup??");
 

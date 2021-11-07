@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/DP-0P/dj-DP#readme",
   "dependencies": {
-    "discord.js": "^13.4.0-dev.1636157105.49e3ce2"
+    "discord.js": "^13.3.1"
   }
 }

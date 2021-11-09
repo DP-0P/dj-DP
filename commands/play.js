@@ -7,7 +7,7 @@ module.exports = {
   options: [
     {
       name: 'query',
-      type: 3, // 'STRING' Type
+      type: 3, 
       description: 'The song you want to play',
       required: true,
     },

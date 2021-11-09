@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "prettier --write \"**/*.js\""
+    "test": "",
+    "lint": ""
   },
   "keywords": [
     "discord",
@@ -24,6 +24,5 @@
     "ytdl-core": "^4.9.1"
   },
   "devDependencies": {
-    "prettier": "2.4.1"
   }
 }

@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 const Client = require("./client/Client");
 const config = require("./config.json");
 const { Player } = require("discord-player");
+const { MessageEmbed } = require('discord.js');
 
 const client = new Client();
 client.commands = new Discord.Collection();
@@ -15,8 +16,6 @@ for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
-
-console.log(client.commands);
 
 const player = new Player(client);
 
@@ -33,9 +32,7 @@ player.on("connectionError", (queue, error) => {
 });
 
 player.on("trackStart", (queue, track) => {
-  queue.metadata.send(
-    `Started playing: **${track.title}** .`
-  );
+  queue.metadata.send(`Started playing **${track.title}**`);
 });
 
 player.on("trackAdd", (queue, track) => {
@@ -43,9 +40,7 @@ player.on("trackAdd", (queue, track) => {
 });
 
 player.on("botDisconnect", (queue) => {
-  queue.metadata.send(
-    "Someone disconnected me from the channel 🤧🤧"
-  );
+  queue.metadata.send("Someone disconnected me from the channel 🤧🤧");
 });
 
 player.on("channelEmpty", (queue) => {
@@ -57,34 +52,38 @@ client.once("ready", async () => {
 });
 
 client.on("ready", function () {
-  client.user.setActivity(config.activity, { type: config.activityType });
+  client.user.setActivity("with ur mom!");
 });
 
-client.once("reconnecting", () => {
-  console.log("Reconnecting!");
+client.on("messageCreate", (message) => {
+  if (message.author.bot || !message.guild) return;
+
+  if(message.content == '/help'){
+    const exampleEmbed = new MessageEmbed()
+	.setColor('#7200fc')
+	.setTitle('Available Commands')
+	.addFields(
+		{ name: '**/play** <song name or link>', value: 'Plays the specified song' },
+		{ name: '**/pause**', value: 'Pause the currently played song' },
+		{ name: '**/resume**', value: 'Resumes the paused song' },
+		{ name: '**/skip**', value: 'Skips to the next song' },
+		{ name: '**/dc**', value: 'Disconnects the bot from the channel' },  
+		{ name: '**/help**', value: 'Shows all the available commands' },  
+	)
+	.setFooter('Made by DP🖤');
+message.reply({ embeds: [exampleEmbed] });
+  }
+
+  message.guild.commands.set(client.commands).then(() => {
+    console.log("Added");
+  });
 });
-
-client.once("disconnect", () => {
-  console.log("Disconnect!");
-});
-
-client.on('messageCreate', message =>{
-  if(message.author.bot || !message.guild) return;
-
-   message.guild.commands.set(client.commands).then(() => {
-  console.log("Added");
-
-});
-});
-
 
 client.on("interactionCreate", async (interaction) => {
   const command = client.commands.get(interaction.commandName.toLowerCase());
 
   try {
-    if (
-      interaction.commandName == "ban" ||
-      interaction.commandName == "userinfo"
+    if (interaction.commandName == "help"
     ) {
       command.execute(interaction, client);
     } else {

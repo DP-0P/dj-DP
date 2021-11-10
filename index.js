@@ -48,9 +48,13 @@ player.on("channelEmpty", (queue) => {
   queue.metadata.send("Nobody is in the voice channel, leaving... Bye...");
 });
 
-client.once("ready", async () => {
+client.once("ready", () => {
   console.log("Ready!");
 });
+
+// client.once("ready", async () => {
+//   console.log("Ready!");
+// });
 
 client.on("ready", function () {
   client.user.setActivity("with ur mom!");
@@ -80,7 +84,7 @@ message.reply({ embeds: [embed] });
   });
 });
 
-client.on("interactionCreate", async (interaction) => {
+client.on("interactionCreate", /*async*/ (interaction) => {
   const command = client.commands.get(interaction.commandName.toLowerCase());
 
   try {

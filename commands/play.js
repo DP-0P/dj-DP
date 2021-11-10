@@ -63,7 +63,7 @@ module.exports = {
       }
 
       await interaction.followUp({
-        content: `Loading the track...`,
+        content: 'Loading the track...',
       });
       searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
       if (!queue.playing) await queue.play();

@@ -9,9 +9,7 @@ const { MessageEmbed } = require('discord.js');
 const client = new Client();
 client.commands = new Discord.Collection();
 
-const commandFiles = fs
-  .readdirSync("./commands")
-  .filter((file) => file.endsWith(".js"));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
@@ -48,19 +46,15 @@ player.on("channelEmpty", (queue) => {
   queue.metadata.send("Nobody is in the voice channel, leaving... Bye...");
 });
 
-client.once("ready", () => {
+client.once("ready", async () => {
   console.log("Ready!");
 });
-
-// client.once("ready", async () => {
-//   console.log("Ready!");
-// });
 
 client.on("ready", function () {
   client.user.setActivity("with ur mom!");
 });
 
-client.on("messageCreate", message => {
+client.on("messageCreate", async message => {
   if (message.author.bot || !message.guild) return;
 
   if(message.content == '/help'){
@@ -84,7 +78,7 @@ message.reply({ embeds: [embed] });
   });
 });
 
-client.on("interactionCreate", /*async*/ (interaction) => {
+client.on("interactionCreate", async interaction => {
   const command = client.commands.get(interaction.commandName.toLowerCase());
 
   try {

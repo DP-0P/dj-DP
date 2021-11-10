@@ -56,7 +56,7 @@ client.on("ready", function () {
   client.user.setActivity("with ur mom!");
 });
 
-client.on("messageCreate", async message => {
+client.on("messageCreate", message => {
   if (message.author.bot || !message.guild) return;
 
   if(message.content == '/help'){

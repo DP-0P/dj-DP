@@ -59,7 +59,7 @@ client.on("messageCreate", (message) => {
   if (message.author.bot || !message.guild) return;
 
   if(message.content == '/help'){
-    const exampleEmbed = new MessageEmbed()
+    const embed = new MessageEmbed()
 	.setColor('#7200fc')
 	.setTitle('Available Commands')
 	.addFields(
@@ -71,7 +71,7 @@ client.on("messageCreate", (message) => {
 		{ name: '**/help**', value: 'Shows all the available commands' },  
 	)
 	.setFooter('Made by DP🖤');
-message.reply({ embeds: [exampleEmbed] });
+message.reply({ embeds: [embed] });
   }
 
   message.guild.commands.set(client.commands).then(() => {

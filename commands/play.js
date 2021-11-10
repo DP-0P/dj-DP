@@ -3,7 +3,7 @@ const {QueryType} = require('discord-player');
 
 module.exports = {
   name: 'play',
-  description: 'Play a song in your channel!',
+  description: 'Plays the specified song',
   options: [
     {
       name: 'query',
@@ -16,7 +16,7 @@ module.exports = {
     try {
       if (!(interaction.member instanceof GuildMember) || !interaction.member.voice.channel) {
         return void interaction.reply({
-          content: 'You are not in a voice channel!',
+          content: "**DumbFck** join a voice channel 🤦🏻‍♂️",
           ephemeral: true,
         });
       }
@@ -26,7 +26,7 @@ module.exports = {
         interaction.member.voice.channelId !== interaction.guild.me.voice.channelId
       ) {
         return void interaction.reply({
-          content: 'You are not in my voice channel!',
+          content: "**DumbFck** we are't in the same channel",
           ephemeral: true,
         });
       }
@@ -63,7 +63,7 @@ module.exports = {
       }
 
       await interaction.followUp({
-        content: `Loading the ${searchResult.playlist ? 'playlist' : 'track'}...`,
+        content: `Loading the track...`,
       });
       searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
       if (!queue.playing) await queue.play();

@@ -6,7 +6,7 @@ module.exports = {
   async execute(interaction, player) {
     if (!(interaction.member instanceof GuildMember) || !interaction.member.voice.channel) {
       return void interaction.reply({
-        content: 'You are not in a voice channel!',
+        content: "**DumbFck** join a voice channel 🤦🏻‍♂️",
         ephemeral: true,
       });
     }
@@ -16,7 +16,7 @@ module.exports = {
       interaction.member.voice.channelId !== interaction.guild.me.voice.channelId
     ) {
       return void interaction.reply({
-        content: 'You are not in my voice channel!',
+        content: "**DumbFck** we are't in the same channel",
         ephemeral: true,
       });
     }
@@ -25,11 +25,11 @@ module.exports = {
     const queue = player.getQueue(interaction.guildId);
     if (!queue || !queue.playing)
       return void interaction.followUp({
-        content: '❌ | No music is being played!',
+        content: '**Bruh!** play a music to pause 🤦🏻‍♂️',
       });
     const success = queue.setPaused(false);
     return void interaction.followUp({
-      content: success ? '▶ | Resumed!' : '',
+      content: success ? 'Resumed!' : '',
     });
   },
 };

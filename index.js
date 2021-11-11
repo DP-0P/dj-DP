@@ -51,7 +51,7 @@ client.once("ready", async () => {
 });
 
 client.on("ready", function () {
-  client.user.setActivity("with ur mom!");
+  client.user.setActivity("with ur crush!");
 });
 
 client.on("messageCreate", async message => {

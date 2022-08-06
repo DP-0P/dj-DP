@@ -6,7 +6,7 @@ module.exports = {
   async execute(interaction, player) {
     if (!(interaction.member instanceof GuildMember) || !interaction.member.voice.channel) {
       return void interaction.reply({
-        content: "**DumbFck** join a voice channel 🤦🏻‍♂️",
+        content: "**Plz** join a voice channel 🤦🏻‍♂️",
         ephemeral: true,
       });
     }
